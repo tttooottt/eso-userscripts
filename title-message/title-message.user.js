@@ -3,6 +3,7 @@
 // @namespace   tttooottt
 // @version     0.1.3
 // @author      tttooottt
+// @description Display current amount of messages in chat in title(tab)
 // @include     *://www.esonline.cf/
 // @grant       unsafeWindow
 // @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/title-message/title-message.user.js
