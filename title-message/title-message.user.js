@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Title Message
 // @namespace   tttooottt
-// @version     0.1.4
+// @version     0.1.5
 // @author      tttooottt
 // @description Display current amount of messages in chat in title(tab)
 // @include     *://www.esonline.cf/
@@ -28,11 +28,12 @@ function updateTitle() {
 
 function updateMessagesCount(timeout) {
     messagesCount++;
-    setTimeout(function () {
+    var id = setTimeout(function () {
         messagesCount--;
         updateTitle();
         taskQueue.shift();
     }, timeout);
+    taskQueue.push(id);
 }
 
 function initMod() {
@@ -52,6 +53,7 @@ function initMod() {
     document.addEventListener(DisconnectEvent, () => {
         document.removeEventListener(ConnectEvent, initMod);
         MessageEvents.map(eventCode => document.removeEventListener(eventCode, messagesHandler));
+        taskQueue.map(id => clearTimeout(id));
     }, { 'once': true })
 }
 
