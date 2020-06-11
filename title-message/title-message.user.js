@@ -36,7 +36,6 @@ function updateMessagesCount(timeout) {
 }
 
 function initMod() {
-    const messages = document.getElementsByClassName("messages")[0];
     const chatTimeout = unsafeWindow.esoConfig.chatMsgClearTimeout;
     
     function messagesHandler(event) {
