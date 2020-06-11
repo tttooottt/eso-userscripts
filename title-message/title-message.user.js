@@ -28,15 +28,15 @@ function updateTitle() {
 
 function updateMessagesCount(timeout) {
     messagesCount++;
-    setTimeout(function () {
+    var id = setTimeout(function () {
         messagesCount--;
         updateTitle();
         taskQueue.shift();
     }, timeout);
+    taskQueue.push(id);
 }
 
 function initMod() {
-    const messages = document.getElementsByClassName("messages")[0];
     const chatTimeout = unsafeWindow.esoConfig.chatMsgClearTimeout;
     
     function messagesHandler(event) {
@@ -53,6 +53,7 @@ function initMod() {
     document.addEventListener(DisconnectEvent, () => {
         document.removeEventListener(ConnectEvent, initMod);
         MessageEvents.map(eventCode => document.removeEventListener(eventCode, messagesHandler));
+        taskQueue.map(id => clearTimeout(id));
     }, { 'once': true })
 }
 
