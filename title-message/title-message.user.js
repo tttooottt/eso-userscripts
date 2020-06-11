@@ -5,8 +5,8 @@
 // @author      tttooottt
 // @include     *://www.esonline.cf/
 // @grant       unsafeWindow
-// @updateURL   
-// @downloadURL 
+// @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/title-message/title-message.user.js
+// @downloadURL https://github.com/tttooottt/eso-userscripts/raw/master/title-message/title-message.user.js
 // @license     MIT
 // ==/UserScript==
 
