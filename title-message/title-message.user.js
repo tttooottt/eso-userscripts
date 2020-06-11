@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Title Message
 // @namespace   tttooottt
-// @version     0.1.3
+// @version     0.1.4
 // @author      tttooottt
 // @description Display current amount of messages in chat in title(tab)
 // @include     *://www.esonline.cf/
