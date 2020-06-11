@@ -11,6 +11,15 @@
 // @license     MIT
 // ==/UserScript==
 
+const MessageEvents = [
+    'chat', 'tryMessage', 'userRoll', 'diceResult'
+];
+
+const ConnectEvent = 'serverTimecode';
+const DisconnectEvent = 'esoDisconnected';
+
+const taskQueue = [];
+
 var messagesCount = 0;
 
 function updateTitle() {
@@ -22,6 +31,7 @@ function updateMessagesCount(timeout) {
     setTimeout(function () {
         messagesCount--;
         updateTitle();
+        taskQueue.shift();
     }, timeout);
 }
 
@@ -38,12 +48,14 @@ function initMod() {
         updateTitle();
     }
 
-    document.addEventListener("chat", messagesHandler);
-    document.addEventListener("tryMessage", messagesHandler);
-    document.addEventListener("userRoll", messagesHandler);
-    document.addEventListener("diceResult", messagesHandler);
+    MessageEvents.map(eventCode => document.addEventListener(eventCode, messagesHandler));
+
+    document.addEventListener(DisconnectEvent, () => {
+        document.removeEventListener(ConnectEvent, initMod);
+        MessageEvents.map(eventCode => document.removeEventListener(eventCode, messagesHandler));
+    }, { 'once': true })
 }
 
-document.addEventListener("serverTimecode", initMod, {
+document.addEventListener(ConnectEvent, initMod, {
     'once': true
 });
