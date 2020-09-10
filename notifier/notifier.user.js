@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Notifier
 // @namespace   tttooottt
-// @version     0.1.0
+// @version     0.1.1
 // @author      tttooottt
 // @description Usercript for https://github.com/questionableprofile/esnotifier support
 // @include     *://www.esonline.cf/
@@ -16,7 +16,7 @@
 const ServerPort = 9673;
 
 const MessageEvents = [
-    'chat', 'tryMessage', 'userRoll', 'diceResult'
+    'chat', 'tryMessage', 'userRoll', 'diceResult', 'youtubePlaying'
 ];
 
 const ConnectEvent = 'serverTimecode';
@@ -27,7 +27,7 @@ const RC = new ESORoomChecker;
 var currentNode;
 
 function sendData(details) {
-    const actorId = details.id || details.sender;
+    const actorId = details.id || details.sender || details.author; //backend developer is brainlet
 
     const _data = {
         "code": details.reason,
