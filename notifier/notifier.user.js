@@ -27,7 +27,7 @@ const RC = new ESORoomChecker;
 var currentNode;
 
 function sendData(details) {
-    const actorId = details.id || details.sender || details.author; //backend developer is brainlet
+    const actorId = details.id || details.sender || details.author; 
 
     const _data = {
         "code": details.reason,
