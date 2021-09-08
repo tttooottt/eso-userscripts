@@ -4,7 +4,7 @@
 // @version     0.1.0
 // @author      tttooottt
 // @description Log messages in console
-// @include     *://*.esonline.tk/
+// @include     *://esonline.tk/
 // @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/console-message-logging/console-message-logging.user.js
 // @downloadURL https://github.com/tttooottt/eso-userscripts/raw/master/console-message-logging/console-message-logging.user.js
 // @license     MIT
