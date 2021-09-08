@@ -4,7 +4,7 @@
 // @version     0.1.5
 // @author      tttooottt
 // @description Display current amount of messages in chat in title(tab)
-// @include     *://www.esonline.cf/
+// @include     *://*.esonline.tk/
 // @grant       unsafeWindow
 // @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/title-message/title-message.user.js
 // @downloadURL https://github.com/tttooottt/eso-userscripts/raw/master/title-message/title-message.user.js
@@ -57,6 +57,4 @@ function initMod() {
     }, { 'once': true })
 }
 
-document.addEventListener(ConnectEvent, initMod, {
-    'once': true
-});
+document.addEventListener(ConnectEvent, initMod, { 'once': true });
