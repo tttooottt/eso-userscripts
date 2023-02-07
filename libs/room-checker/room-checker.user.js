@@ -10,21 +10,22 @@
 // ==/UserScript==
 
 const RoomEventHandlers = {
-    'nodeData': (event, that) => { that.users = event.detail.users },
-    'userJoin': (event, that) => { that.users.push(event.detail.user) },
-    'userLeave': (event, that) => { that.users = that.users.filter(user => user.id != event.detail.id) }
+	'nodeData': (event, that) => { that.users = event.detail.users },
+	'userJoin': (event, that) => { that.users.push(event.detail.user) },
+	// TODO: Optimize filter
+	'userLeave': (event, that) => { that.users = that.users.filter(user => user.id != event.detail.id) }
 };
 
-class ESORoomChecker {
-    users;
-    
-    constructor() {
-        this.users = [];
-        
-        Object.keys(RoomEventHandlers).map(eventCode => {
-            document.addEventListener(eventCode, (event) => {
-                RoomEventHandlers[eventCode](event, this);
-            });
-        });
-    }
+class ESORoom {
+	users;
+
+	constructor() {
+		this.users = [];
+		
+		Object.keys(RoomEventHandlers).map(eventCode => {
+			document.addEventListener(eventCode, (event) => {
+				RoomEventHandlers[eventCode](event, this);
+			});
+		});
+	}
 }
