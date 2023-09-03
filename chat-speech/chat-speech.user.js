@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Text-to-Speech
 // @namespace   tttooottt
-// @version     0.1.1
+// @version     0.1.2
 // @author      tttooottt
 // @description Use speech synthesis for chat messages
 // @match       *://*.esonline.tk/
@@ -19,7 +19,7 @@ const DisconnectEvent = 'esoDisconnected';
 
 function initMod() {
 	const messagesHandler = (e) => {
-		let text = e.detail.message.replaceAll(/\/|\\/g,'');
+		let text = e.detail.message.replaceAll(/\/|\\|\*/g,'');
 		let utter = new SpeechSynthesisUtterance(text);
 		utter.lang = 'ru';
 		speechSynthesis.speak(utter);
