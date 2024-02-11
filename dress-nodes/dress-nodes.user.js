@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        ESO Dress Nodes Unlimited
 // @namespace   tttooottt
-// @version     0.1.0
+// @version     0.1.1
 // @author      tttooottt
 // @description Dress in any node
-// @match       *://*.esonline.tk/
+// @match       *://*.esonline.su/
 // @grant       unsafeWindow
 // @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/dress-nodes/dress-nodes.user.js
 // @downloadURL https://github.com/tttooottt/eso-userscripts/raw/master/dress-nodes/dress-nodes.user.js
