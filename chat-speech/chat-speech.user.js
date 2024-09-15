@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Text-to-Speech
 // @namespace   tttooottt
-// @version     0.1.3
+// @version     0.1.4
 // @author      tttooottt
 // @description Use speech synthesis for chat messages
 // @match       *://*.esonline.su/
