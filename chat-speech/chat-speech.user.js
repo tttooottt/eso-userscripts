@@ -20,6 +20,8 @@ const DisconnectEvent = 'esoDisconnected';
 function initMod() {
 	const messagesHandler = (e) => {
 		let text = e.detail.message.replaceAll(/\/|\\|\*/g,'');
+		const urlreg = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+		text = text.replaceAll(urlreg, '');
 		let utter = new SpeechSynthesisUtterance(text);
 		utter.lang = 'ru';
 		speechSynthesis.speak(utter);
