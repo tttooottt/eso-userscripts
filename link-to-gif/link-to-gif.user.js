@@ -14,13 +14,14 @@
 GM_addStyle ( `
     .mini-gif {
         max-height: 64px;
+        max-width: 64px;
     }
     
     .gif-preview {
         position: fixed;
         top: 0;
         right: 0;
-        width: 50%;
+        max-width: 50%;
         max-height: 100%;
         z-index:99;
     }` );
