@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Link to GIF
 // @namespace   tttooottt
-// @version     0.1.0
+// @version     0.1.1
 // @author      tttooottt
 // @description Link in chat to GIF
 // @match       *://*.esonline.su/
