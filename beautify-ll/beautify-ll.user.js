@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Beautify ll
 // @namespace   tttooottt
-// @version     0.1.0
+// @version     0.1.1
 // @author      tttooottt
 // @description Beautify ll
 // @match       *://*.esonline.su/
@@ -13,29 +13,32 @@
 // ==/UserScript==
 
 GM_addStyle(`
-    .context-menu:has(.messages) {
-      padding: 0 !important;
-      height: unset !important;
-      width: unset !important;
-      max-width: 100%;
-      max-height: 75%;
-    
-      .messages-wrapper {
-        position: unset !important;
-      }
-      .msg {
-        background: none !important;;
-      }
-    }
-    
-    .context-menu:has(.messages)::after {
-      content: attr(players-count);
-      color: white;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      transform: translate(100%, 100%);
-    }`);
+.context-menu:has(.messages) {
+  padding: 0 !important;
+  height: unset !important;
+  width: unset !important;
+  max-width: 100%;
+
+  .messages {
+    max-height: 75vh;
+  }
+
+  .messages-wrapper {
+    position: unset !important;
+  }
+  .msg {
+    background: none !important;;
+  }
+}
+
+.context-menu:has(.messages)::after {
+  content: attr(players-count);
+  color: white;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(100%, 100%);
+}`);
     
 const ConnectEvent = 'serverTimecode';
 const DisconnectEvent = 'esoDisconnected';
