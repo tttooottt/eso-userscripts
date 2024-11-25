@@ -39,7 +39,7 @@ GM_addStyle(`
   bottom: 0;
   transform: translate(100%, 100%);
 }`);
-    
+
 const ConnectEvent = 'serverTimecode';
 const DisconnectEvent = 'esoDisconnected';
 const UpdateEvents = ['nodeData', 'userJoin', 'userLeave'];
@@ -64,7 +64,6 @@ function initMod() {
     });
 
     const updatesHandler = () => {
-        console.log(contextMenu);
         if (!contextMenu) {
             return;
         }
