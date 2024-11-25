@@ -6,6 +6,8 @@
 // @description Beautify ll
 // @match       *://*.esonline.su/
 // @grant       GM_addStyle
+// @updateURL   https://github.com/tttooottt/eso-userscripts/raw/master/beautify-ll/beautify-ll.user.js
+// @downloadURL https://github.com/tttooottt/eso-userscripts/raw/master/beautify-ll/beautify-ll.user.js
 // @license     MIT
 // @require     https://github.com/tttooottt/eso-userscripts/raw/master/libs/room-checker/room-checker.user.js
 // ==/UserScript==
@@ -34,47 +36,46 @@ GM_addStyle(`
       transform: translate(100%, 100%);
     }`);
     
-    const ConnectEvent = 'serverTimecode';
-    const DisconnectEvent = 'esoDisconnected';
-    const UpdateEvents = ['nodeData', 'userJoin', 'userLeave'];
-    
-    const room = new ESORoom();
-    
-    function initMod() {
-        let contextMenu;
-        const mo = new MutationObserver(ms => {
-            ms.forEach(m => {
-                if (!m.addedNodes[0]?.classList?.contains("context-menu-wrapper")) {
-                    return;
-                }
-                const msg = m.addedNodes[0].querySelector(".msg");
-                if (!msg || !(msg.childElementCount === 1)) {
-                    return;
-                }
-    
-                contextMenu = m.addedNodes[0].firstChild;
-                contextMenu.setAttribute("players-count", room.users.length);
-            })
-        });
-    
-        const updatesHandler = () => {
-            console.log(contextMenu);
-            if (!contextMenu) {
+const ConnectEvent = 'serverTimecode';
+const DisconnectEvent = 'esoDisconnected';
+const UpdateEvents = ['nodeData', 'userJoin', 'userLeave'];
+
+const room = new ESORoom();
+
+function initMod() {
+    let contextMenu;
+    const mo = new MutationObserver(ms => {
+        ms.forEach(m => {
+            if (!m.addedNodes[0]?.classList?.contains("context-menu-wrapper")) {
                 return;
             }
+            const msg = m.addedNodes[0].querySelector(".msg");
+            if (!msg || !(msg.childElementCount === 1)) {
+                return;
+            }
+
+            contextMenu = m.addedNodes[0].firstChild;
             contextMenu.setAttribute("players-count", room.users.length);
-        };
-    
-        mo.observe(document.querySelector(".screens"), {childList: true, subtree: true});
-    
-        UpdateEvents.map(eventCode => document.addEventListener(eventCode, updatesHandler));
-    
-        document.addEventListener(DisconnectEvent, () => {
-            document.removeEventListener(ConnectEvent, initMod);
-            UpdateEvents.map(eventCode => document.removeEventListener(eventCode, updatesHandler));
-            mo.disconnect();
-        }, { 'once': true })
-    }
-    
-    document.addEventListener(ConnectEvent, initMod, { 'once': true });
-    
+        })
+    });
+
+    const updatesHandler = () => {
+        console.log(contextMenu);
+        if (!contextMenu) {
+            return;
+        }
+        contextMenu.setAttribute("players-count", room.users.length);
+    };
+
+    mo.observe(document.querySelector(".screens"), {childList: true, subtree: true});
+
+    UpdateEvents.map(eventCode => document.addEventListener(eventCode, updatesHandler));
+
+    document.addEventListener(DisconnectEvent, () => {
+        document.removeEventListener(ConnectEvent, initMod);
+        UpdateEvents.map(eventCode => document.removeEventListener(eventCode, updatesHandler));
+        mo.disconnect();
+    }, { 'once': true })
+}
+
+document.addEventListener(ConnectEvent, initMod, { 'once': true });
