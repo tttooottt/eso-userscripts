@@ -18,6 +18,7 @@ GM_addStyle(`
       height: unset !important;
       width: unset !important;
       max-width: 100%;
+      max-height: 75%;
     
       .messages-wrapper {
         position: unset !important;
