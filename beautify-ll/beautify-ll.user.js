@@ -29,6 +29,7 @@ GM_addStyle(`
   .msg {
     background: none !important;;
     width: max-content;
+    max-width: unset;
   }
 }
 
