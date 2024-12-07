@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        ESO Beautify ll
 // @namespace   tttooottt
-// @version     0.1.2
+// @version     0.1.3
 // @author      tttooottt
 // @description Beautify ll
 // @match       *://*.esonline.su/
@@ -17,7 +17,7 @@ GM_addStyle(`
   padding: 0 !important;
   height: unset !important;
   width: unset !important;
-  max-width: 95%;
+  max-width: 75%;
 
   .messages {
     max-height: 90vh;
@@ -30,6 +30,7 @@ GM_addStyle(`
     background: none !important;;
     width: max-content;
     max-width: 100%;
+    padding: 0;
   }
 }
 
